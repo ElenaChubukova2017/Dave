@@ -1,0 +1,56 @@
+**Full Name**
+Elena Chubukova
+
+Selenium with Java framework.
+
+This project based on Maven build automation tool and tests are written in JUnit. Framework can be built with using TestNG, but with Cucumber BBD preferred to use JUnit (from Cucumber official documentation).
+
+In pom.xml I can easily manage our dependencies, versions and plugins.
+
+It is created with Page Object Model design pattern, which creates an object repository for storing all web elements. It is useful in reducing code duplication and improves test case maintenance and easy to manage all web elements, because they are all in one place. If any web elements is changed, I don't have to go to find it and go through all the classes, I just can go to one place and make all necessary changes.
+
+This project can be used with different locators like id, name, css, xpath. I prefer xpath, because with a xpath we can go from parent to child, from child to parent, can handle dynamic elements (starts-with, ends-with, contains), can use indexes, can use text. I used xpath with text, but the text contained spaces. So, I used normalize-space(.) method.
+
+It is also created with Singleton design pattern for a Driver. When we develop a class in such a way that it can have only instance at any time. It is very useful when you need to use same object of a class across all classes or framework. Singleton class must return the same instance again, if it is instantiated again.
+
+In current framework I used Cucumber, which helps to implement BDD approach. In feature files instead of Test I used Scenario with Gherkin language (Given, When, And, Then), so non-technical people can understand the scenarios. Cucumber BDD brings team together, for team collaboration, even non-technical people can understand what is written in the feature files.
+
+In step definitions classes I converted the features files into an action, implemented coding.
+
+In CukesRunner: dryRun option can either set as true or false.
+
+If it is set as true, it means that Cucumber will only check if every Step mentioned in the Feature File have corresponding code written in Step Definition file or not. When dryRun is true- we are able to get a snippets from feature files and copy them to a step_deginition class.
+
+When dryRun is false- it will run our codes.
+
+Glue Option helps Cucumber to locate the step definition file. We specify the package to load glue code (step definitions or hooks) in the glue option.
+
+Future Option - the path of the step definition file.
+
+Plugin 'Pretty' generates pretty HTML reports with charts showing the results of cucumber runs.
+Plugin 'html:target/cucumber-reports.html' - will generate Cucumber html report
+Plugin 'me.jvt.cucumber.report.PrettyReports:target/cucumber' - for a pretty reports, more detailed.
+Plugin 'rerun' will rerun failed tests.
+Publish = true - will generate report link in the console. We can easily share this report url with anyone within our organization/teams and they can be easily accessed from anywhere.
+
+In the runner file, I can decide which specific tag (and so as the scenario(s)) I want Cucumber to execute. Tag starts with “@” (@wip, @smoke, @regression and etc).
+
+Failed Test Runner will allow us to run failed tests, so we don't have to run all tests.
+
+In Hooks class I store an annotations. In After method I have implemented 'take a screenshot' logic for a failed tests.
+
+In Utilities I have our Driver and Configuration Reader classes. Configuration Reader helps to read the files from a properties files. And we also can have util class, where we can store all reusable methods.
+
+Under resources I have my feature files.
+
+_______________________________________________________________________________________________________________________________
+
+Here is the links for a human-readable test report containing the results: https://reports.cucumber.io/reports/eceb731a-48f0-4e20-b840-ff37aa731819
+
+Or this is cucumber html report: http://localhost:63342/Dave/target/cucumber/cucumber-html-reports/overview-features.html
+
+________________________________________________________________________________________________________________________________
+
+If anyone will have any questions, I will be happy to answer.
+
+Thank you!
